@@ -1,6 +1,6 @@
 import requests
 import numpy
-
+import binance
 """
 get all pairs and their splits for base and quote
 https://api.binance.com/api/v3/exchangeInfo
@@ -12,9 +12,18 @@ get pair A, Get Pair B, Get Pair C
 BINANCE_INFO = "https://api.binance.com/api/v3/exchangeInfo"
 
 
+
 def exchangeInfo(URL):
     exch_info = requests.get(url=URL).json()
     return exch_info['symbols']
+
+
+def get_orderbook_ticker():
+    '''
+
+    tickers = client.get_orderbook_tickers()
+    :return:
+    '''
 
 
 def getPairs():
