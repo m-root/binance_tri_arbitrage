@@ -1,4 +1,4 @@
-import pair_funct
+from payload import pair_funct
 
 '''
 load json file
