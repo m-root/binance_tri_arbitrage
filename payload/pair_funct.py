@@ -33,6 +33,3 @@ def pair_split(info, pair):
     results = next(pair_ for pair_ in
                    info if pair_['symbol'] == pair)
     return [results['baseAsset'], results['quoteAsset']]
-
-
-# print(pair_split('BTCUSDT'))

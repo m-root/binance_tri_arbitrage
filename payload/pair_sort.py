@@ -1,5 +1,9 @@
 # todo
 # Finished alpha forward and reverse pair sort
+'''
+Using 'closed chain link' algo
+https://gist.github.com/m-root/ed47e17336aaee8bd9eddf7060eaae2b
+'''
 def separator(ab, b):
     if b.index(ab) == 0:
         return b[1]
