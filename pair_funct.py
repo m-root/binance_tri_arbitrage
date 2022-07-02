@@ -13,7 +13,7 @@ def exchange_info():
     return info['symbols']
 
 
-def pair_ask_bid(pair):
+def pair_ask_bid(orderbook_tickers, pair):
     '''
     {
     'symbol': 'OPEUR',
@@ -25,13 +25,14 @@ def pair_ask_bid(pair):
     :param pair:
     :return:
     '''
-    results = next(pair_ for pair_ in orderbook_tickers() if pair_['symbol'] == pair)
+    results = next(pair_ for pair_ in orderbook_tickers if pair_['symbol'] == pair)
     return results
 
 
-def pair_split(pair):
-    info = exchange_info()
+def pair_split(info, pair):
     results = next(pair_ for pair_ in
-                   info['symbols']
-                   if pair_['symbol'] == pair)
+                   info if pair_['symbol'] == pair)
     return [results['baseAsset'], results['quoteAsset']]
+
+
+# print(pair_split('BTCUSDT'))
