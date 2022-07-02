@@ -1,4 +1,3 @@
-import requests
 import numpy
 import binance
 """
@@ -9,26 +8,14 @@ create an array to get and remove duplicates
 get pair A, Get Pair B, Get Pair C
 """
 
-BINANCE_INFO = "https://api.binance.com/api/v3/exchangeInfo"
-
-
-
-def exchangeInfo(URL):
-    exch_info = requests.get(url=URL).json()
+def exchangeInfo():
+    exch_info = binance.Client().get_exchange_info()
     return exch_info['symbols']
-
-
-def get_orderbook_ticker():
-    '''
-
-    tickers = client.get_orderbook_tickers()
-    :return:
-    '''
 
 
 def getPairs():
     pairList = []
-    for pairs in exchangeInfo(BINANCE_INFO):
+    for pairs in exchangeInfo():
         if pairs['isSpotTradingAllowed'] == True and pairs['status'] == 'TRADING':
             pairList.append(pairs)
             # print(pairList)
