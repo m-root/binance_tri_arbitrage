@@ -28,6 +28,11 @@ def pair_ask_bid(orderbook_tickers, pair):
     results = next(pair_ for pair_ in orderbook_tickers if pair_['symbol'] == pair)
     return results
 
+def pair_depth(symbol):
+    #todo
+    binance.Client().get_order_book(symbol=symbol)['asks']
+    binance.Client().get_order_book(symbol=symbol)['bids']
+
 
 def pair_split(info, pair):
     results = next(pair_ for pair_ in
