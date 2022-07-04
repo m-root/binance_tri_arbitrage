@@ -44,41 +44,38 @@ def order_book_orders(orders=a, qty=5):
     depth_sum = 0
 
     for depth in orders:
-        # print(f'qty is {qty}')
-        # print(f'float(depth[1]) is ::: {float(depth[1])}')
-        if float(depth[1]) > qty:
-            # print(f'qty is ::: {qty}')
-            # print(f'cc is ::: {cc}')
+        print('-------------We are-----------------')
+        print(qty, float(depth[1]))
+        print('-------------We are-----------------')
+        if float(depth[1]) >= qty:
             depth_sum += (float(depth[0]) * qty)
-            # print(f"Math is {(float(depth[0]) * qty)}")
             qty_sum += qty
-            # print(f'cc is {cc}')
-            # print(f'dd is {dd}')
-            # print(f'qty is {qty}')
-            # print(f'avr is {cc / dd}')
-            # print(f'-------------------------------------------------')
-            # print(f'=================================================')
-            break
+            print(depth_sum)
+            print(qty_sum)
+            print(depth_sum / qty_sum)
+            print('-------------01-----------------')
+            return depth_sum / qty_sum
 
-        qty_sum -= float(depth[1])
+        qty -= float(depth[1])
         if qty <= 0:
+            print('-------------02a-----------------')
+            print(depth_sum)
+            print(qty_sum)
+            print('-------------02-----------------')
+            # return depth_sum / qty_sum
             break
-        # print(f'qty is ::: {qty}')
-        print(count)
-        # print(f'cc is ::: {cc}')
+        print('-------------03a-----------------')
+        print(depth_sum)
+        print(qty_sum)
+        print('-------------03-----------------')
         depth_sum += (float(depth[0]) * float(depth[1]))
-        # print(f"Math is {(float(depth[0]) * float(depth[1]))}")
         qty_sum += float(depth[1])
-        # print(f'cc is {cc}')
-        # print(f'dd is {dd}')
-        # print(f'qty is {qty}')
-        # print(f'avr is {cc / dd}')
-        # print(f'-------------------------------------------------')
-        # print(f'=================================================')
-
         count += 1
+        print(depth_sum / qty_sum)
+
+    return depth_sum / qty_sum
 
     print(time.time() - c)
 
 
-print(order_book_orders())
+print(order_book_orders(a, 40))
