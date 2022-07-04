@@ -33,7 +33,7 @@ def flow_calc(start_asset, quantity, pair_, bid_price, ask_price):
         return [swap, pair_funct.pair_split(info, pair_)[0]]
 
 
-def calc_tri_arb_surf_rate():
+def calc_arb_surf_rate():
     """
     Extract Pair info
     First pair then break it down to base and quote
@@ -74,5 +74,5 @@ def calc_tri_arb_surf_rate():
         print(f'Quantity is : {quantity}')
 
 c = time.time()
-print(calc_tri_arb_surf_rate())
+print(calc_arb_surf_rate())
 print(time.time()-c)
