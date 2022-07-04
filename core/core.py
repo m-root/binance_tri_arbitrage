@@ -1,3 +1,5 @@
+import time
+
 from payload import pair_funct
 
 '''
@@ -71,5 +73,6 @@ def calc_tri_arb_surf_rate():
 
         print(f'Quantity is : {quantity}')
 
-
+c = time.time()
 print(calc_tri_arb_surf_rate())
+print(time.time()-c)
