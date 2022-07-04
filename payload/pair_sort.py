@@ -1,31 +1,35 @@
-# todo
-# Finished alpha forward and reverse pair sort
-'''
-Using 'closed chain link' algo
-https://gist.github.com/m-root/ed47e17336aaee8bd9eddf7060eaae2b
-'''
-def separator(ab, b):
-    if b.index(ab) == 0:
-        return b[1]
+def pair_sorting(starting_asset, pair_collection):
+    '''
+    starting asset for an array of pairs to sort out
+    and arrange before any trade execution while using
+    'closed chain link' algo. Examples on the code below.
+
+    https://gist.github.com/m-root/ed47e17336pair_ee8bd9eddf7060epair_e2b
+
+    :param starting_asset:
+    :param pair_collection:
+    :return: pair collection
+    '''
+    pairs = []
+    while len(pair_collection) > 0:
+        for pair_ in pair_collection:
+            if starting_asset not in pair_:
+                pair_ = [pair for pair in pair_collection if starting_asset in pair][0]
+            ans = separator(starting_asset, pair_)
+            pair_collection.remove(pair_)
+            starting_asset = ans
+            pairs.append(pair_)
+    return pairs
+
+
+def separator(asset, pair):
+    '''
+    Separator for assets in a pair
+    :param asset:
+    :param pair:
+    :return: asset in various position
+    '''
+    if pair.index(asset) == 0:
+        return pair[1]
     else:
-        return b[0]
-import time
-
-def pair_sorting(start_item, array_edit):
-    new_arr = []
-    time_start = time.time()
-    print(time_start)
-    while len(array_edit) > 0:
-        for aa in array_edit:
-            if start_item not in aa:
-                aa = [b for b in array_edit if start_item in b][0]
-                print(aa)
-            ans = separator(start_item, aa)
-            print(ans)
-            array_edit.remove(aa)
-            start_item = ans
-            new_arr.append(aa)
-    print(time.time()-time_start)
-    print(new_arr)
-    return new_arr
-
+        return pair[0]
