@@ -56,6 +56,8 @@ def getPairs():
                                     print(third_pair_split)
                                     TriangularPairList.append([pair_a['symbol'], pair_b['symbol'], pair_c['symbol']])
 
+
+
                                     '''
                                     create a new array = unique_sort
                                     check unique and put it in an array
